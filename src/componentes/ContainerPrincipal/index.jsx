@@ -1,0 +1,45 @@
+import React from 'react'
+import { styled } from 'styled-components'
+
+const ContainerGeral = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  margin-top: 80px;
+  min-height: calc(100vh - 125px);
+`
+const ConteudoWrapper = styled.div`
+  box-shadow: 0px 0px 9px 3px rgba(71, 68, 68, 0.1);
+  border-radius: 5px;
+
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 54px;
+
+  h2, h3, h4 {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    text-indent: 50px;
+    text-align: justify;
+    margin-bottom: .5rem;
+  }
+`
+
+const ContainerPrincipal = ({ children }) => {
+  return (
+    <ContainerGeral>
+        <ConteudoWrapper>
+            { children }
+        </ConteudoWrapper>
+    </ContainerGeral>
+  )
+}
+
+export default ContainerPrincipal

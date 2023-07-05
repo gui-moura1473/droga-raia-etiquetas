@@ -1,0 +1,55 @@
+:root {
+    --fonte-padrao: 'Poppins Regular';
+    --fonte-negrito:'Poppins Bold';
+    --fonte-fina: 'Poppins Thin';
+    --fonte-barcode: 'Barcode Regular';
+    --azul-raia: #006c7f;
+    --azul-botao: #0d6efd;
+    --azul-botao-hover: #0a58ca;
+    --vermelho-botao: #dc3545;
+    --vermelho-botao-hover: #b02a37;
+
+    font-size: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fonte-padrao);
+}
+
+html, body {
+    width: 100%;
+    font-family: var(--fonte-padrao);
+    background-color: #f2f2f2;
+}
+
+
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url('../assets/fonts/Poppins-Regular.ttf');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins Bold';
+    src: url('../assets/fonts/Poppins-Bold.ttf');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins Thin';
+    src: url('../assets/fonts/Poppins-Light.ttf');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Barcode Regular';
+    src: url('../assets/fonts/LibreBarcode39-Regular.ttf');
+    font-weight: 700;
+    font-display: swap;
+}
