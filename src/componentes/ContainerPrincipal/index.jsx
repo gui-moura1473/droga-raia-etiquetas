@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styled-components'
 
-const ContainerGeral = styled.main`
+export const ContainerGeral = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,9 @@
 import { styled } from "styled-components"
 import { Botao } from "../../NormalBtn"
 import { HiOutlineLogout } from "react-icons/hi"
+import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { AuthContext } from "../../../contexts/AuthContext"
 
 const ButtonLogout = styled(Botao)`
     background: var(--vermelho-botao);
@@ -15,12 +18,18 @@ const ButtonLogout = styled(Botao)`
     }
 `
 
-const BtnLogout = ({ children, onClick }) => {
+const BtnLogout = () => {
+    const navigate = useNavigate();
+    const { setFilial } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        setFilial('');
+    }
 
     return (
-        <ButtonLogout onClick={onClick} >
+        <ButtonLogout onClick={handleLogout} >
             <HiOutlineLogout />
-            {children}
+            Sair
         </ButtonLogout>
     )
 }

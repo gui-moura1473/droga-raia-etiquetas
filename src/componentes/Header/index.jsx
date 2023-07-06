@@ -5,7 +5,7 @@ import BtnLogout from './BtnLogout';
 import NavBar from './NavBar';
 import IndentificadorLoja from './IdentificadorLoja';
 
-const CabecalhoContainer = styled.header`
+export const CabecalhoContainer = styled.header`
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,7 +27,7 @@ const CabecalhoContainer = styled.header`
     }
 `
 
-const Logo = styled.img`
+export const Logo = styled.img`
     padding: 5px 0;
     width: 150px;
     cursor: pointer;
@@ -42,9 +42,7 @@ const Header = () => {
             <NavBar />
             <div>
                 <IndentificadorLoja />
-                <BtnLogout>
-                    Sair
-                </BtnLogout>
+                <BtnLogout />
             </div>
         </CabecalhoContainer>
     )

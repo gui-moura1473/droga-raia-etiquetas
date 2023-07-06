@@ -1,21 +1,15 @@
 import { styled } from "styled-components";
 
-import { HiOutlineUser } from "react-icons/hi";
 import { SlLocationPin } from "react-icons/sl";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const IdentificadorLojaWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-self: flex-end;
-    gap: .3rem;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
     margin-right: 3rem;
-
-    div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-    }
 
     svg {
         color: #fff;
@@ -34,16 +28,12 @@ const IdentificadorLojaWrapper = styled.div`
 `;
 
 const IndentificadorLoja = () => {
+    const { filial } = useContext(AuthContext);
+
     return (
         <IdentificadorLojaWrapper>
-            <div>
-                <HiOutlineUser />
-                <p><span> Usuário: </span> Guilherme</p>
-            </div>
-            <div>
                 <SlLocationPin />
-                <p><span>Filial:</span> 189 - Birigui A</p>
-            </div>
+                <p><span>Filial:</span> {filial.filial} - {filial.loja}</p>
         </IdentificadorLojaWrapper>
     )
 };
