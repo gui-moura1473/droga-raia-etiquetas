@@ -71,7 +71,6 @@ const Login = () => {
             <ContainerLogin>
                 <ConteudoWrapper>
                     <h2>Entrar</h2>
-                    <p>{String(authenticated)} {filial}</p>
                     <SelectLoja
                         options={lojas}
                         value={lojaSelecionada} 
