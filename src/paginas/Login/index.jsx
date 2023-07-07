@@ -49,7 +49,7 @@ const Login = () => {
     const [lojaSelecionada, setLojaSelecionada] = useState('');
     const navigate = useNavigate();
 
-    const { filial, setFilial, authenticated } = useContext(AuthContext);
+    const { setFilial } = useContext(AuthContext);
 
     const handleLogin = (event) => {
         event.preventDefault();

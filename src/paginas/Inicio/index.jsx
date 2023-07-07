@@ -15,6 +15,16 @@ const SectionWrapper = styled.div`
   > div {
     flex: 1;
   }
+
+  h3, h4 {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+`
+
+const TituloPrincipal = styled.h2`
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 `
 
 const ContainerContato = styled.form`
@@ -54,7 +64,7 @@ const Inicio = () => {
 
   return (
     <ContainerPrincipal>
-      <h2>Bem vindo ao sistema de utilidades v1.0!</h2>
+      <TituloPrincipal>Bem vindo ao sistema de utilidades v1.0!</TituloPrincipal>
       <SectionWrapper>
         <div>
           <p>

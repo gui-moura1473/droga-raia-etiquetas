@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import downArrow from '../../../assets/images/down-icon.svg'
 
 const SelectWrapper = styled.div`
     display: flex;
@@ -19,6 +20,15 @@ const SelectWrapper = styled.div`
         font-size: inherit;
         padding: 0.5rem;
         cursor: pointer;
+
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        background-image: url(${downArrow});
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
     }
 `
 

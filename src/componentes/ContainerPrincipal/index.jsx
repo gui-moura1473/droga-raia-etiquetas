@@ -20,10 +20,6 @@ const ConteudoWrapper = styled.div`
   align-items: center;
   padding: 16px 54px;
 
-  h2, h3, h4 {
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
 
   p {
     text-indent: 50px;
