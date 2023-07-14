@@ -19,13 +19,6 @@ const ConteudoWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 16px 54px;
-
-
-  p {
-    text-indent: 50px;
-    text-align: justify;
-    margin-bottom: .5rem;
-  }
 `
 
 const ContainerPrincipal = ({ children }) => {

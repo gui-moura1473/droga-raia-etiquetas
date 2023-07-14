@@ -5,6 +5,8 @@ import TextAreaContato from './TextAreaContato'
 import NormalBtn from '../../componentes/NormalBtn'
 import { styled } from 'styled-components'
 
+
+
 const SectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -14,6 +16,12 @@ const SectionWrapper = styled.div`
 
   > div {
     flex: 1;
+  }
+
+  > div p {
+    text-indent: 50px;
+    text-align: justify;
+    margin-bottom: .5rem;
   }
 
   h3, h4 {

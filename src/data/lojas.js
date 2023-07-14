@@ -8,13 +8,13 @@ export const lojas = [
     {
         filial: '2004',
         loja: 'Birigui B',
-        endereco: 'Praça Dr. Gama, 422 - Centro',
-        telefone: '(18) 99769-8705 | (18) 3634-1840'
+        endereco: 'Rua Barão do Rio Branco, 1350 - Centro',
+        telefone: '(18) 99621-5233'
     },
     {
         filial: '3561',
         loja: 'Birigui C',
-        endereco: 'Praça Dr. Gama, 422 - Centro',
-        telefone: '(18) 99769-8705 | (18) 3634-1840'
+        endereco: 'Av. Youssef Ismail Mansour, 44 - Silvares',
+        telefone: '(18) 2185-0058'
     }
 ]

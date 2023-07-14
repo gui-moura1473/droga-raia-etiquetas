@@ -4,7 +4,7 @@ import downArrow from '../../../assets/images/down-icon.svg'
 
 const Wrapper = styled.div`
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     flex: 1;
 
     label {
@@ -48,7 +48,6 @@ const InputSelect = ({ value, setValue }) => {
                 <option value="2">a cada 12 horas</option>
                 <option value="3">a cada 8 horas</option>
                 <option value="4">a cada 6 horas</option>
-                <option value="5">a cada 4 horas</option>
             </select>
         </Wrapper>
     )

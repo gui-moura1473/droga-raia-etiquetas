@@ -7,6 +7,7 @@ import Inicio from './paginas/Inicio'
 import Login from './paginas/Login'
 import DefaultPageLayout from './DefaultPageLayout'
 import { AuthProvider, AuthContext } from './contexts/AuthContext'
+import Servicos from './paginas/Servicos'
 
 const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -34,6 +35,10 @@ const AppRoutes = () => {
           <Route
             path='/posologia'
             element={<Private><DefaultPageLayout><Posologia /></DefaultPageLayout></Private>}
+          />
+          <Route
+            path='/servicos'
+            element={<Private><DefaultPageLayout><Servicos/></DefaultPageLayout></Private>}
           />
         </Routes>
       </AuthProvider>

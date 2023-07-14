@@ -18,7 +18,7 @@ const SelectWrapper = styled.div`
         border-bottom: 3px solid #006c7f;
         outline: none;
         font-size: inherit;
-        padding: 0.5rem;
+        padding: 0.5rem 1.5rem;
         cursor: pointer;
 
         appearance: none;

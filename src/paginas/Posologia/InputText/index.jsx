@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 
 const Wrapper = styled.div`
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     flex: 1;
 
     label {
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
     }
 `
 
-const InputText = ({ label, value, setValue }) => {
+const InputText = ({ label, value, setValue, disabled = false }) => {
   return (
     <Wrapper>
         <label>{label}</label>
@@ -38,6 +38,7 @@ const InputText = ({ label, value, setValue }) => {
             type='text'
             value={value}
             onChange={event => setValue(event.target.value)}
+            disabled={disabled}
         />
     </Wrapper>
   )

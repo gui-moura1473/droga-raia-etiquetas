@@ -20,6 +20,11 @@ const NavBar = () => {
                     Posologia
                 </MenuLink>
             </li>
+            <li>
+                <MenuLink to='/servicos'>
+                    Serviços
+                </MenuLink>
+            </li>
         </BarraNavegacao>
     )
 }

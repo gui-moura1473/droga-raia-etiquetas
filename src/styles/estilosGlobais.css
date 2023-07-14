@@ -25,6 +25,9 @@ html, body {
     background-color: #f2f2f2;
 }
 
+input:disabled {
+    background-color: #e9e1e1;
+}
 
 @font-face {
     font-family: 'Poppins Regular';
