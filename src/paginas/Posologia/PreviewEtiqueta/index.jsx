@@ -5,25 +5,25 @@ import { AuthContext } from '../../../contexts/AuthContext'
 import logoRaia from '../../../assets/images/logo-raia.png'
 
 const EtiquetaContainer = styled.div`
-    width: 210px;
+    width: 250px;
     border: 1px solid #000;
     border-radius: 2px;
-    padding: 1.3px;
+    padding: 1.5px;
     display: flex;
     flex-direction: column;
     background: #fff;
     
     h2 {
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     h3 {
-        font-size: .7rem;
+        font-size: 1rem;
     }
 
     span {
-        font-size: .7rem;
+        font-size: .9rem;
         margin: 3px;
         display: inline-block;
     }
@@ -32,12 +32,12 @@ const EtiquetaContainer = styled.div`
         background-color: #000;
         color: #fff;
         font-family: Poppins Bold;
-        padding: 1px;
+        padding: 2px;
         text-align: center; 
     }
 
     p {
-        font-size: .5rem;
+        font-size: .6rem;
     }
 `
 
@@ -83,7 +83,7 @@ const PreviewEtiqueta = ({ referencia, posologia, horariosRecomendados }) => {
     ] 
 
     return (
-        <EtiquetaContainer ref={referencia}>
+        <EtiquetaContainer ref={referencia} className="etiqueta-print">
             <h2>Posologia</h2>
             <ContainerInterno>
                 <h3>Como utilizar?</h3>

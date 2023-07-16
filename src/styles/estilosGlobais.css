@@ -56,3 +56,16 @@ input:disabled {
     font-weight: 700;
     font-display: swap;
 }
+
+@media print {
+    html, body{
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    @page {
+        size: 80mm 150mm;
+    }
+}

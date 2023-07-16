@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from 'styled-components'
 
 export const ContainerGeral = styled.main`
@@ -19,10 +18,10 @@ const ConteudoWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 16px 54px;
-`
+  `
 
 const ContainerPrincipal = ({ children }) => {
-  return (
+return (
     <ContainerGeral>
         <ConteudoWrapper>
             { children }

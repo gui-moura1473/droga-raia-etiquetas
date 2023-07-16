@@ -7,7 +7,6 @@ import InputSelect from './InputSelect'
 import RadioGroup from './RadioGroup'
 import NormalBtn from '../../componentes/NormalBtn'
 import PreviewEtiqueta from './PreviewEtiqueta'
-import BtnPrint from './BtnPrint'
 
 const TituloPrincipal = styled.h2`
   padding-bottom: 1.2rem;
@@ -68,18 +67,18 @@ const Posologia = () => {
         'a cada 6 horas',
       ]
 
-      if(inputSintomasDisabled) {
-        setPosologiaCompleta(`${quantidade}, ${frequenciaPorEstenso[frequencia]}, caso ${sintomas}, ${duracao}.`);
+      if (inputSintomasDisabled) {
+        setPosologiaCompleta(`${quantidade} ${frequenciaPorEstenso[frequencia]}, caso ${sintomas}, ${duracao}.`);
         return
       }
 
-      setPosologiaCompleta(`${quantidade}, ${frequenciaPorEstenso[frequencia]}, ${duracao}.`);
+      setPosologiaCompleta(`${quantidade} ${frequenciaPorEstenso[frequencia]}, ${duracao}.`);
       return
     }
-    
+
     setPosologiaCompleta(`${posologia}.`)
 
-  },[quantidade, duracao, frequencia, sintomas, posologia])
+  }, [quantidade, duracao, frequencia, sintomas, posologia])
 
   const [posologiaPersonalizada, setPosologiaPersonalizada] = useState(false);
   const [horariosRecomendados, setHorariosRecomendados] = useState(false);
@@ -93,9 +92,18 @@ const Posologia = () => {
 
   const handlePrintEvent = (event) => {
     event.preventDefault();
-    if(quantidade === '' && frequencia === '' && duracao === '' || posologia === '') {
-      alert('Você precisa preencher a posologia antes de imprimir!');
-      return;
+    if (!posologiaPersonalizada) {
+      if (quantidade === '' || frequencia === '' || duracao === '') {
+        alert('Você precisa preencher a posologia antes de imprimir!');
+        return;
+      }
+
+    }
+    if (posologiaPersonalizada) {
+      if (posologia === '') {
+        alert('Você precisa preencher a posologia antes de imprimir!');
+        return;
+      }
     }
 
     handlePrint();
@@ -157,19 +165,19 @@ const Posologia = () => {
           {
             inputSintomasDisabled && (
               <InputText
-              label="Sintomas"
-              value={sintomas}
-              setValue={setSintomas}
-            />
+                label="Sintomas"
+                value={sintomas}
+                setValue={setSintomas}
+              />
             )
-            
+
           }
         </RowWrapper>
         <BtnsContainer>
-          <PreviewEtiqueta 
+          <PreviewEtiqueta
             posologia={posologiaCompleta}
-            horariosRecomendados={{horariosRecomendados, frequencia}}
-            referencia={componentRef} 
+            horariosRecomendados={{ horariosRecomendados, frequencia }}
+            referencia={componentRef}
           />
           <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
         </BtnsContainer>
