@@ -5,7 +5,7 @@ import { AuthContext } from '../../../contexts/AuthContext'
 import logoRaia from '../../../assets/images/logo-raia.png'
 
 const EtiquetaContainer = styled.div`
-    width: 250px;
+    width: 240px;
     border: 1px solid #000;
     border-radius: 2px;
     padding: 1.5px;
