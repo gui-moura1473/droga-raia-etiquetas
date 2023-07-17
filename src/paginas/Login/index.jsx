@@ -59,8 +59,9 @@ const Login = () => {
         }
 
         const loja = lojas.find((loja) => loja.filial === lojaSelecionada);
+        window.localStorage.setItem('loja' , JSON.stringify(loja));
         setFilial(loja);
-        navigate('/inicio');
+        navigate('/');
     }
 
     return (

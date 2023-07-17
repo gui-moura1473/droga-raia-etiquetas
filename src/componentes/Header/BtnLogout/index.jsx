@@ -23,6 +23,7 @@ const BtnLogout = () => {
     const { setFilial } = useContext(AuthContext);
 
     const handleLogout = () => {
+        localStorage.removeItem('loja')
         setFilial('');
     }
 

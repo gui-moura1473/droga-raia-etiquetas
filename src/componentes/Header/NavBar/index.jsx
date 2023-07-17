@@ -11,7 +11,7 @@ const NavBar = () => {
     return (
         <BarraNavegacao>
             <li>
-                <MenuLink to='/inicio'>
+                <MenuLink to='/'>
                     Início
                 </MenuLink>
             </li>

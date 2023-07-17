@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ContainerPrincipal from '../../componentes/ContainerPrincipal'
 import InputContato from './InputContato'
 import TextAreaContato from './TextAreaContato'
 import NormalBtn from '../../componentes/NormalBtn'
 import { styled } from 'styled-components'
+import emailjs from '@emailjs/browser'
 
 
 
@@ -53,20 +54,29 @@ const InputsWrapper = styled.div`
 
 const Inicio = () => {
   const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
+  const [assunto, setAssunto] = useState('');
   const [mensagem, setMensagem] = useState('');
+
+  const form = useRef();
 
   const handleMessageSubmit = (event) => { 
     event.preventDefault();
 
-    if(nome === '' || email === '' || mensagem === '') {
+    if(nome === '' || assunto === '' || mensagem === '') {
       alert('Você precisa preencher todos os campos pra se contatar comigo!')
       return
     }
     
-    console.log(nome, email, mensagem);
+    emailjs.sendForm('service_fkbw5qr', 'template_2kp6og4', form.current, 'J5McQqsLC5u0e5mk2')
+      .then((result) => {
+          alert('Mensagem enviada com sucesso!');
+      }, (error) => {
+          alert(error.message);
+      });
+
+
     setNome('');
-    setEmail('');
+    setAssunto('');
     setMensagem('');
   }
 
@@ -89,7 +99,7 @@ const Inicio = () => {
             Para deixar qualquer sugestão/ideia basta preencher e enviar os dados nos campos logo abaixo. Um bom atendimento e ótimo dia de trabalho a todos vocês usuários!
           </p>
         </div>
-        <ContainerContato>
+        <ContainerContato ref={form} onSubmit={handleMessageSubmit}>
           <h3>Faça contato já</h3>
           <InputsWrapper>
             <InputContato
@@ -97,27 +107,30 @@ const Inicio = () => {
               id='nome'
               placeholder='Digite o seu nome'
               type='text'
+              name='user_nome'
               value={nome}
               setValue={setNome}
             />
             <InputContato
-              label='E-mail'
-              id='email'
-              placeholder='Digite seu e-mail'
-              type='email'
-              value={email}
-              setValue={setEmail}
+              label='Assunto'
+              id='assunto'
+              placeholder='Digite aqui o assunto'
+              type='assunto'
+              name='user_assunto'
+              value={assunto}
+              setValue={setAssunto}
             />
           </InputsWrapper>
           <TextAreaContato
             label='Mensagem'
             id='mensagem'
+            name='user_mensagem'
             value={mensagem}
             setValue={setMensagem}
           />
-          <NormalBtn onClick={handleMessageSubmit}>
+          <button>
             Enviar
-          </NormalBtn>
+          </button>
         </ContainerContato>
       </SectionWrapper>
     </ContainerPrincipal>
