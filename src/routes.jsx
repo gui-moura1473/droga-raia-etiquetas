@@ -8,6 +8,9 @@ import Login from './paginas/Login'
 import DefaultPageLayout from './DefaultPageLayout'
 import { AuthProvider, AuthContext } from './contexts/AuthContext'
 import Servicos from './paginas/Servicos'
+import Farmapop from './paginas/Farmapop'
+import Tutorial from './paginas/Tutorial'
+import Encomendas from './paginas/Encomendas'
 
 const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -43,6 +46,18 @@ const AppRoutes = () => {
           <Route
             path='/servicos'
             element={<Private><DefaultPageLayout><Servicos/></DefaultPageLayout></Private>}
+          />
+          <Route
+            path='/encomendas'
+            element={<Private><DefaultPageLayout><Encomendas/></DefaultPageLayout></Private>}
+          />
+          <Route
+            path='/farmapop'
+            element={<Private><DefaultPageLayout><Farmapop/></DefaultPageLayout></Private>}
+          />
+          <Route
+            path='/tutorial'
+            element={<Private><DefaultPageLayout><Tutorial/></DefaultPageLayout></Private>}
           />
         </Routes>
       </AuthProvider>

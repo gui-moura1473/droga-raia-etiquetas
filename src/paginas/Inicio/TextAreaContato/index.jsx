@@ -31,7 +31,7 @@ const TextAreaWrapper = styled.div`
   }
 `
 
-function TextAreaContato({ label, id, value, setValue }) {
+function TextAreaContato({ label, id, value, setValue, name }) {
   return (
     <TextAreaWrapper>
         <label htmlFor={id}>
@@ -40,6 +40,7 @@ function TextAreaContato({ label, id, value, setValue }) {
         <textarea
             id={id}
             value={value}
+            name={name}
             onChange={(event) => setValue(event.target.value)}
         />
     </TextAreaWrapper>

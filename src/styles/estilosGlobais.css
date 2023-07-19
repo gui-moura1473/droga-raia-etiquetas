@@ -64,8 +64,23 @@ input:disabled {
         justify-content: center;
         align-items: flex-start;
     }
-    
-    @page {
-        size: 80mm 150mm;
+
+    @page rotated {
+        size:  80mm 150mm landscape;
+        margin-top: 8mm;
+        margin-left: 3mm;
     }
+
+    .farmapop {
+        page: rotated;
+    }
+
+    @page {
+        size: 80mm 150mm portrait;
+        margin-top: 2.5mm;
+    }
+
+    
+
+
 }

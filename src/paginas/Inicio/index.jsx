@@ -99,7 +99,7 @@ const Inicio = () => {
             Para deixar qualquer sugestão/ideia basta preencher e enviar os dados nos campos logo abaixo. Um bom atendimento e ótimo dia de trabalho a todos vocês usuários!
           </p>
         </div>
-        <ContainerContato ref={form} onSubmit={handleMessageSubmit}>
+        <ContainerContato ref={form}>
           <h3>Faça contato já</h3>
           <InputsWrapper>
             <InputContato
@@ -128,9 +128,9 @@ const Inicio = () => {
             value={mensagem}
             setValue={setMensagem}
           />
-          <button>
+          <NormalBtn onClick={handleMessageSubmit}>
             Enviar
-          </button>
+          </NormalBtn>
         </ContainerContato>
       </SectionWrapper>
     </ContainerPrincipal>

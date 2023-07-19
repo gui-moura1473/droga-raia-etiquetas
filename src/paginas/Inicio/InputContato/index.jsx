@@ -28,7 +28,7 @@ const InputsWrapper = styled.div`
   }
 `
 
-function InputContato({ label, placeholder, type , id, value, setValue }) {
+function InputContato({ label, placeholder, type , id, value, setValue, name }) {
   return (
     <InputsWrapper>
         <label htmlFor={id}>
@@ -37,6 +37,7 @@ function InputContato({ label, placeholder, type , id, value, setValue }) {
         <input 
             type='text'
             value={value}
+            name={name}
             onChange={(event) => setValue(event.target.value)}
             placeholder={placeholder}
             id={id}

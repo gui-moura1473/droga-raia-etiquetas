@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import MenuLink from "../../MenuLink";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const BarraNavegacao = styled.ul`
     display: flex;
@@ -8,6 +10,7 @@ const BarraNavegacao = styled.ul`
 `
 
 const NavBar = () => {
+    const { filial } = useContext(AuthContext);
     return (
         <BarraNavegacao>
             <li>
@@ -23,6 +26,25 @@ const NavBar = () => {
             <li>
                 <MenuLink to='/servicos'>
                     Serviços
+                </MenuLink>
+            </li>
+            <li>
+                <MenuLink to='/encomendas'>
+                    Encomendas
+                </MenuLink>
+            </li>
+            { filial.farmapop && 
+            (
+            <li>
+                <MenuLink to='/farmapop'>
+                    Farmácia Popular
+                </MenuLink>
+            </li>
+            )
+            }
+            <li>
+                <MenuLink to='/tutorial'>
+                    Como utilizar?
                 </MenuLink>
             </li>
         </BarraNavegacao>

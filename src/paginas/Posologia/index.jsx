@@ -8,7 +8,7 @@ import RadioGroup from './RadioGroup'
 import NormalBtn from '../../componentes/NormalBtn'
 import PreviewEtiqueta from './PreviewEtiqueta'
 
-const TituloPrincipal = styled.h2`
+export const TituloPrincipal = styled.h2`
   padding-bottom: 1.2rem;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid #ccc;
