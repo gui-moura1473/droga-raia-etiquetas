@@ -1,6 +1,6 @@
 :root {
     --fonte-padrao: 'Poppins Regular';
-    --fonte-negrito:'Poppins Bold';
+    --fonte-negrito: 'Poppins Bold';
     --fonte-fina: 'Poppins Thin';
     --fonte-barcode: 'Barcode Regular';
     --azul-raia: #006c7f;
@@ -19,7 +19,8 @@
     font-family: var(--fonte-padrao);
 }
 
-html, body {
+html,
+body {
     width: 100%;
     font-family: var(--fonte-padrao);
     background-color: #f2f2f2;
@@ -58,7 +59,9 @@ input:disabled {
 }
 
 @media print {
-    html, body{
+
+    html,
+    body {
         background-color: #fff;
         display: flex;
         justify-content: center;
@@ -66,7 +69,7 @@ input:disabled {
     }
 
     @page rotated {
-        size:  80mm 150mm landscape;
+        size: 80mm 150mm landscape;
         margin-top: 8mm;
         margin-left: 3mm;
     }
@@ -80,7 +83,7 @@ input:disabled {
         margin-top: 2.5mm;
     }
 
-    
+
 
 
 }
