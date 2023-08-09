@@ -1,12 +1,12 @@
-import { styled } from 'styled-components'
-import React, { useEffect, useRef, useState } from 'react'
-import { useReactToPrint } from 'react-to-print'
-import ContainerPrincipal from '../../componentes/ContainerPrincipal'
-import InputText from './InputText'
-import InputSelect from './InputSelect'
-import RadioGroup from './RadioGroup'
-import NormalBtn from '../../componentes/NormalBtn'
-import PreviewEtiqueta from './PreviewEtiqueta'
+import { styled } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
+import ContainerPrincipal from "../../componentes/ContainerPrincipal";
+import InputText from "./InputText";
+import InputSelect from "./InputSelect";
+import RadioGroup from "./RadioGroup";
+import NormalBtn from "../../componentes/NormalBtn";
+import PreviewEtiqueta from "./PreviewEtiqueta";
 
 export const TituloPrincipal = styled.h2`
   padding-bottom: 1.2rem;
@@ -16,7 +16,7 @@ export const TituloPrincipal = styled.h2`
 
   letter-spacing: 1px;
   text-align: center;
-`
+`;
 
 const BtnsContainer = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const BtnsContainer = styled.div`
 
   padding-top: 1.2rem;
   border-top: 1px solid #ccc;
-`
+`;
 
 const FormPosologia = styled.form`
   display: flex;
@@ -36,7 +36,7 @@ const FormPosologia = styled.form`
   gap: 1.2rem;
   align-items: center;
   width: 70%;
-`
+`;
 
 const RowWrapper = styled.div`
   display: flex;
@@ -44,41 +44,42 @@ const RowWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   gap: 2rem;
-`
+`;
 
 const Posologia = () => {
-  const [quantidade, setQuantidade] = useState('');
-  const [duracao, setDuracao] = useState('');
+  const [quantidade, setQuantidade] = useState("");
+  const [duracao, setDuracao] = useState("");
   const [frequencia, setFrequencia] = useState(0);
-  const [sintomas, setSintomas] = useState('');
-  const [posologia, setPosologia] = useState('');
+  const [sintomas, setSintomas] = useState("");
+  const [posologia, setPosologia] = useState("");
 
-  const [posologiaCompleta, setPosologiaCompleta] = useState('');
+  const [posologiaCompleta, setPosologiaCompleta] = useState("");
 
   useEffect(() => {
-
     if (!posologiaPersonalizada) {
-
       const frequenciaPorEstenso = [
-        '',
-        'uma vez ao dia',
-        'a cada 12 horas',
-        'a cada 8 horas',
-        'a cada 6 horas',
-      ]
+        "",
+        "uma vez ao dia",
+        "a cada 12 horas",
+        "a cada 8 horas",
+        "a cada 6 horas",
+      ];
 
       if (inputSintomasDisabled) {
-        setPosologiaCompleta(`${quantidade} ${frequenciaPorEstenso[frequencia]}, caso ${sintomas}, ${duracao}.`);
-        return
+        setPosologiaCompleta(
+          `${quantidade} ${frequenciaPorEstenso[frequencia]}, caso ${sintomas}, ${duracao}.`
+        );
+        return;
       }
 
-      setPosologiaCompleta(`${quantidade} ${frequenciaPorEstenso[frequencia]}, ${duracao}.`);
-      return
+      setPosologiaCompleta(
+        `${quantidade} ${frequenciaPorEstenso[frequencia]}, ${duracao}.`
+      );
+      return;
     }
 
-    setPosologiaCompleta(`${posologia}.`)
-
-  }, [quantidade, duracao, frequencia, sintomas, posologia])
+    setPosologiaCompleta(`${posologia}.`);
+  }, [quantidade, duracao, frequencia, sintomas, posologia]);
 
   const [posologiaPersonalizada, setPosologiaPersonalizada] = useState(false);
   const [horariosRecomendados, setHorariosRecomendados] = useState(false);
@@ -93,59 +94,57 @@ const Posologia = () => {
   const handlePrintEvent = (event) => {
     event.preventDefault();
     if (!posologiaPersonalizada) {
-      if (quantidade === '' || frequencia === '' || duracao === '') {
-        alert('Você precisa preencher a posologia antes de imprimir!');
+      if (quantidade === "" || frequencia === "" || duracao === "") {
+        alert("Você precisa preencher a posologia antes de imprimir!");
         return;
       }
-
     }
     if (posologiaPersonalizada) {
-      if (posologia === '') {
-        alert('Você precisa preencher a posologia antes de imprimir!');
+      if (posologia === "") {
+        alert("Você precisa preencher a posologia antes de imprimir!");
         return;
       }
     }
 
     handlePrint();
-  }
+
+    setPosologia("");
+    setSintomas("");
+    setFrequencia(0);
+    setDuracao("");
+    setQuantidade("");
+  };
 
   return (
     <ContainerPrincipal>
       <TituloPrincipal>Etiquetas de Posologia</TituloPrincipal>
       <FormPosologia>
-        {
-          !posologiaPersonalizada && (
-            <RowWrapper>
-              <InputText
-                label="Quantidade"
-                value={quantidade}
-                setValue={setQuantidade}
-              />
-              <InputSelect
-                value={frequencia}
-                setValue={setFrequencia}
-              />
-              <InputText
-                label="Duração"
-                value={duracao}
-                setValue={setDuracao}
-                disabled={usoContinuo}
-              />
-            </RowWrapper>
-          )
-        }
+        {!posologiaPersonalizada && (
+          <RowWrapper>
+            <InputText
+              label="Quantidade"
+              value={quantidade}
+              setValue={setQuantidade}
+            />
+            <InputSelect value={frequencia} setValue={setFrequencia} />
+            <InputText
+              label="Duração"
+              value={duracao}
+              setValue={setDuracao}
+              disabled={usoContinuo}
+            />
+          </RowWrapper>
+        )}
 
-        {
-          posologiaPersonalizada && (
-            <RowWrapper>
-              <InputText
-                label="Descreva a posologia Personalizada"
-                value={posologia}
-                setValue={setPosologia}
-              />
-            </RowWrapper>
-          )
-        }
+        {posologiaPersonalizada && (
+          <RowWrapper>
+            <InputText
+              label="Descreva a posologia Personalizada"
+              value={posologia}
+              setValue={setPosologia}
+            />
+          </RowWrapper>
+        )}
         <RowWrapper>
           <RadioGroup
             setRadios={{
@@ -155,23 +154,20 @@ const Posologia = () => {
               setDuracao,
               setSintomas,
               setQuantidade,
-              setInputSintomasDisabled
+              setInputSintomasDisabled,
             }}
             values={{
               usoContinuo,
-              posologiaPersonalizada
+              posologiaPersonalizada,
             }}
           />
-          {
-            inputSintomasDisabled && (
-              <InputText
-                label="Sintomas"
-                value={sintomas}
-                setValue={setSintomas}
-              />
-            )
-
-          }
+          {inputSintomasDisabled && (
+            <InputText
+              label="Sintomas"
+              value={sintomas}
+              setValue={setSintomas}
+            />
+          )}
         </RowWrapper>
         <BtnsContainer>
           <PreviewEtiqueta
@@ -181,11 +177,9 @@ const Posologia = () => {
           />
           <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
         </BtnsContainer>
-
       </FormPosologia>
+    </ContainerPrincipal>
+  );
+};
 
-    </ContainerPrincipal >
-  )
-}
-
-export default Posologia
+export default Posologia;

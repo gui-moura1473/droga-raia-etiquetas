@@ -53,7 +53,7 @@ input:disabled {
 
 @font-face {
     font-family: 'Barcode Regular';
-    src: url('../assets/fonts/LibreBarcode39-Regular.ttf');
+    src: url('../assets/fonts/LibreBarcode128-Regular.ttf');
     font-weight: 700;
     font-display: swap;
 }
