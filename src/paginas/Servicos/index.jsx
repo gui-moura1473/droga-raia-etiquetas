@@ -64,14 +64,6 @@ const EtiquetaServico = styled.div`
     font-size: 1.1rem;
   }
 
-  p {
-    display: block;
-    font-family: var(--fonte-barcode);
-    margin-top: 1.7rem;
-    line-height: 1.5rem;
-    font-size: 4rem;
-  }
-
   span {
     margin-bottom: 0.7rem;
   }
@@ -110,7 +102,7 @@ const Servicos = () => {
         <InputGroup label="Código" value={codigoServico} />
         <InputGroup label="Preço" value={precoServico} />
       </InputsWrapper>
-      <EtiquetaServico ref={componentRef}>
+      <EtiquetaServico ref={componentRef} className="servico">
         <h3>AUTORIZAÇÃO DE SERVIÇOS</h3>
         <img src={logoRaia} width="100px" />
         <table>
@@ -129,7 +121,7 @@ const Servicos = () => {
             </tr>
           </tbody>
         </table>
-        <p>{codigoServico}</p>
+        <img src={`./assets/ean/${codigoServico}.png`} />
         <span>{codigoServico}</span>
       </EtiquetaServico>
       <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>

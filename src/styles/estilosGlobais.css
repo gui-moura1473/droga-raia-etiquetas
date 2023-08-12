@@ -2,7 +2,6 @@
     --fonte-padrao: 'Poppins Regular';
     --fonte-negrito: 'Poppins Bold';
     --fonte-fina: 'Poppins Thin';
-    --fonte-barcode: 'Barcode Regular';
     --azul-raia: #006c7f;
     --azul-botao: #0d6efd;
     --azul-botao-hover: #0a58ca;
@@ -51,13 +50,6 @@ input:disabled {
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Barcode Regular';
-    src: url('../assets/fonts/LibreBarcode128-Regular.ttf');
-    font-weight: 700;
-    font-display: swap;
-}
-
 @media print {
 
     html,
@@ -68,21 +60,27 @@ input:disabled {
         align-items: flex-start;
     }
 
-    @page rotated {
+    @page {
+        size: 80mm 20mm portrait;
+        margin-top: 2.5mm;
+    }
+
+    @page popular {
         size: landscape;
         margin-top: 8mm;
         margin-left: 3mm;
     }
 
     .farmapop {
-        page: rotated;
+        page: popular;
         transform: scale(.9);
     }
 
-    @page {
-        size: 80mm 150mm portrait;
-        margin-top: 2.5mm;
+    .servico {
+        transform: scale(.9);
     }
+
+
 
 
 
