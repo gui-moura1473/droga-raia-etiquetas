@@ -69,13 +69,14 @@ input:disabled {
     }
 
     @page rotated {
-        size: 80mm 150mm landscape;
+        size: landscape;
         margin-top: 8mm;
         margin-left: 3mm;
     }
 
     .farmapop {
         page: rotated;
+        transform: scale(.9);
     }
 
     @page {
