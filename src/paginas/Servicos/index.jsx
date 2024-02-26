@@ -1,15 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 
 import { TituloPrincipal } from "../Posologia";
 import ContainerPrincipal from "../../componentes/ContainerPrincipal";
 import InputGroup from "./InputGroup";
 import SelectGroup from "./SelectGroup";
-import { servicos } from "../../data/lojas";
 
 import logoRaia from "../../assets/images/droga-raia-logo2.png";
 import NormalBtn from "../../componentes/NormalBtn";
 import { useReactToPrint } from "react-to-print";
+import axios from "axios";
+import { servicos } from "../../data/lojas.js";
 
 const InputsWrapper = styled.form`
   display: flex;
@@ -70,6 +71,18 @@ const EtiquetaServico = styled.div`
 `;
 
 const Servicos = () => {
+  const [teste, setTeste] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://drogaraia-etiquetas-api.cyclic.app/api/servicos")
+      .then((res) => {
+        console.log(res.data);
+        setTeste(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const [servicoSelecionado, setServicoSelecionado] = useState(0);
   const [codigoServico, setCodigoServico] = useState(servicos[0].codigo);
   const [precoServico, setPrecoServico] = useState(servicos[0].preco);
@@ -121,7 +134,9 @@ const Servicos = () => {
             </tr>
           </tbody>
         </table>
-        <img src={`./assets/ean/${codigoServico}.png`} />
+        <img
+          src={`https://api.invertexto.com/v1/barcode?token=${process.env.BARCODE_API_TOKEN}&text=${codigoServico}&type=code128&font=0`}
+        />
         <span>{codigoServico}</span>
       </EtiquetaServico>
       <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>

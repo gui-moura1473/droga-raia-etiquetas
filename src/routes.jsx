@@ -11,6 +11,8 @@ import Servicos from "./paginas/Servicos";
 import Farmapop from "./paginas/Farmapop";
 import Tutorial from "./paginas/Tutorial";
 import Encomendas from "./paginas/Encomendas";
+import PainelControle from "./paginas/Tutorial/PainelControle";
+import ConfigImpressora from "./paginas/Tutorial/ConfigImpressora";
 
 const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -88,6 +90,26 @@ const AppRoutes = () => {
               <Private>
                 <DefaultPageLayout>
                   <Tutorial />
+                </DefaultPageLayout>
+              </Private>
+            }
+          />
+          <Route
+            path="/tutorial/painelcontrole"
+            element={
+              <Private>
+                <DefaultPageLayout>
+                  <PainelControle />
+                </DefaultPageLayout>
+              </Private>
+            }
+          />
+          <Route
+            path="/tutorial/configimpressora"
+            element={
+              <Private>
+                <DefaultPageLayout>
+                  <ConfigImpressora />
                 </DefaultPageLayout>
               </Private>
             }
