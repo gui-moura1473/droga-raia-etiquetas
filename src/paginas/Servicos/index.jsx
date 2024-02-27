@@ -77,7 +77,6 @@ const Servicos = () => {
     axios
       .get("https://drogaraia-etiquetas-api.cyclic.app/api/servicos")
       .then((res) => {
-        console.log(res.data);
         setTeste(res.data);
       })
       .catch((err) => console.log(err));
@@ -134,9 +133,7 @@ const Servicos = () => {
             </tr>
           </tbody>
         </table>
-        <img
-          src={`https://api.invertexto.com/v1/barcode?token=${process.env.BARCODE_API_TOKEN}&text=${codigoServico}&type=code128&font=0`}
-        />
+        <img src="https://api.invertexto.com/v1/barcode?token=6737%7Cps8ZQ3Vo7T8Ojzdhn7LMdUYoAVtbkesR&text=5870&type=code128&font=0" />
         <span>{codigoServico}</span>
       </EtiquetaServico>
       <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
