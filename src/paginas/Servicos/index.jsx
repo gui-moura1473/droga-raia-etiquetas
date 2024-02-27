@@ -102,6 +102,12 @@ const Servicos = () => {
     handlePrint();
   };
 
+  const imagem = () => {
+    axios.get(
+      "https://api.invertexto.com/v1/barcode?token=6737%7Cps8ZQ3Vo7T8Ojzdhn7LMdUYoAVtbkesR&text=5870&type=code128&font=arial"
+    );
+  };
+
   return (
     <ContainerPrincipal>
       <TituloPrincipal>Serviços Farmacêuticos</TituloPrincipal>
@@ -133,7 +139,7 @@ const Servicos = () => {
             </tr>
           </tbody>
         </table>
-        <img src="https://api.invertexto.com/v1/barcode?token=6737%7Cps8ZQ3Vo7T8Ojzdhn7LMdUYoAVtbkesR&text=5870&type=code128&font=0" />
+        <img src="https://api.invertexto.com/v1/barcode?6755|5bfEFKnHcGmWE4HvsJyZCcctwtDzPZql&text=5870&type=code128&font=0/barcode.png" />
         <span>{codigoServico}</span>
       </EtiquetaServico>
       <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
