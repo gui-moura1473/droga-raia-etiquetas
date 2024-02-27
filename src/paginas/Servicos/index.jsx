@@ -139,7 +139,7 @@ const Servicos = () => {
             </tr>
           </tbody>
         </table>
-        <img src="https://api.invertexto.com/v1/barcode?6755|5bfEFKnHcGmWE4HvsJyZCcctwtDzPZql&text=5870&type=code128&font=0/barcode.png" />
+        <img src="https://api.invertexto.com/v1/barcode?token=6755%7C5bfEFKnHcGmWE4HvsJyZCcctwtDzPZql&text=5870&type=code128&font=0" />
         <span>{codigoServico}</span>
       </EtiquetaServico>
       <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
