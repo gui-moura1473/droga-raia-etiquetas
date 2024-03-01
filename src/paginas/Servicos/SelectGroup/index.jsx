@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { styled } from "styled-components";
 import downArrow from "../../../assets/images/down-icon.svg";
 
@@ -47,8 +47,8 @@ const SelectGroup = ({ handleChange, value, servicos }) => {
       <label>Serviços</label>
       <select value={value} onChange={(e) => handleChange(e.target.value)}>
         {servicos.map((servico, index) => (
-          <option value={index} key={servico.codigo}>
-            {servico.servico}
+          <option value={index} key={servico._id}>
+            {servico.name}
           </option>
         ))}
       </select>
