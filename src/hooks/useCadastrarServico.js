@@ -24,3 +24,6 @@ const createNovoServico = (data) => {
         });
     return servicos
 }
+
+
+// https://drogaraia-etiquetas-api.cyclic.app/api/servicos

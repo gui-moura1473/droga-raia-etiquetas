@@ -5,8 +5,12 @@ import InputTextModalWrapper from "./InputTextModalWrapper";
 import InputMask from "react-input-mask";
 import { Botao } from "../../../componentes/NormalBtn";
 import { useCadastrarServico } from "../../../hooks/useCadastrarServico";
-import { deformatMoney } from "../../../utils/formatMoney";
-import toast, { Toaster } from "react-hot-toast";
+import {
+  deformatMoney,
+  formatMoneyEditServico,
+} from "../../../utils/formatMoney";
+import { Toaster } from "react-hot-toast";
+import { useEditarServico } from "../../../hooks/useEditarServico";
 
 const BgModal = styled.div`
   width: 100vw;
@@ -72,42 +76,78 @@ const SubmitButton = styled(Botao)`
   height: 46px;
 `;
 
-const ModalNovoServico = ({ handleCloseModal }) => {
+const ModalNovoServico = ({
+  handleCloseModal,
+  valoresEditar,
+  editar,
+  setEditar,
+}) => {
   const [novoServicoValue, setNovoServicoValue] = useState({
     name: "",
     price: undefined,
     ean: undefined,
   });
 
-  const { mutate, isSuccess } = useCadastrarServico();
+  useEffect(() => {
+    if (editar) {
+      setNovoServicoValue({
+        _id: valoresEditar._id,
+        name: valoresEditar.name,
+        price: formatMoneyEditServico(valoresEditar?.price),
+        ean: valoresEditar.ean,
+      });
+      return;
+    }
+
+    setNovoServicoValue({
+      name: "",
+      price: undefined,
+      ean: undefined,
+    });
+  }, [editar]);
+
+  const { mutate: cadastrarServico, isSuccess: sucessoCadastro } =
+    useCadastrarServico();
+
+  const { mutate: editarServico, isSuccess: sucucessoEdit } =
+    useEditarServico();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const servico = {
-      name: novoServicoValue.name,
-      price:
-        novoServicoValue.price !== undefined
-          ? deformatMoney(novoServicoValue.price)
-          : 0,
-      ean: novoServicoValue.ean,
-    };
+    if (!editar) {
+      const servico = {
+        name: novoServicoValue.name,
+        price:
+          novoServicoValue.price !== undefined
+            ? deformatMoney(novoServicoValue.price)
+            : 0,
+        ean: novoServicoValue.ean,
+      };
 
-    mutate(servico);
+      cadastrarServico(servico);
+      return;
+    }
+    editarServico(novoServicoValue);
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (sucessoCadastro || sucucessoEdit) {
       handleCloseModal(false);
     }
-  }, [isSuccess]);
+  }, [sucessoCadastro, sucucessoEdit]);
 
   return (
     <BgModal>
       <ModalContainer onSubmit={handleSubmit}>
         <ModalHeader>
           <h2>Cadastrar/Editar Seviço</h2>
-          <CgCloseO onClick={() => handleCloseModal(false)} />
+          <CgCloseO
+            onClick={() => {
+              handleCloseModal(false);
+              setEditar(false);
+            }}
+          />
         </ModalHeader>
         <ModalBody>
           <div>

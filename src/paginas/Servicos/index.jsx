@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { styled } from "styled-components";
 import { FaPlus } from "react-icons/fa";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 import { TituloPrincipal } from "../Posologia";
 import ContainerPrincipal from "../../componentes/ContainerPrincipal";
@@ -15,6 +17,7 @@ import { formatMoney } from "../../utils/formatMoney";
 import { useServicos } from "../../hooks/useServicos";
 import { Toaster } from "react-hot-toast";
 import ModalNovoServico from "./ModalNovoServico";
+import { useDeletarServico } from "../../hooks/useDeletarServico";
 
 const InputsWrapper = styled.form`
   display: flex;
@@ -75,14 +78,14 @@ const EtiquetaServico = styled.div`
   }
 `;
 
-const AdicionarBtn = styled.button`
+const BtnServicos = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 38px;
   padding: 6px 12px;
 
-  background: var(--azul-botao);
+  background: ${(props) => props.corbtn};
   color: #fff;
   font-family: inherit;
   font-size: 1.15rem;
@@ -94,12 +97,15 @@ const AdicionarBtn = styled.button`
   transition: 0.5s;
 
   &:hover {
-    background: var(--azul-botao-hover);
+    background: ${(props) => props.corbtnhover};
   }
 `;
 
 const Servicos = () => {
   const { data: servicos, isLoading, isError } = useServicos();
+  const { mutate } = useDeletarServico();
+  const [valoresEditar, setValoresEditar] = useState(0);
+  const [editar, setEditar] = useState(false);
 
   const [adicionaModalIsOpen, setadicionaModalIsOpen] = useState(false);
   const [servicoSelecionado, setServicoSelecionado] = useState(0);
@@ -118,9 +124,24 @@ const Servicos = () => {
     handlePrint();
   };
 
-  const handleBtnAdiciona = (event) => {
+  const handleBtnModal = (event) => {
     event.preventDefault();
     setadicionaModalIsOpen(true);
+  };
+
+  const handleBtnModalEditar = (event) => {
+    event.preventDefault();
+    setadicionaModalIsOpen(() => {
+      setValoresEditar(servicos[servicoSelecionado]);
+      setEditar(true);
+      return true;
+    });
+  };
+
+  const handleBtnDeleta = (event) => {
+    event.preventDefault();
+    mutate(servicos[servicoSelecionado]?._id);
+    setServicoSelecionado(0);
   };
 
   return (
@@ -149,9 +170,29 @@ const Servicos = () => {
               label="Preço"
               value={formatMoney(servicos[servicoSelecionado].price)}
             />
-            <AdicionarBtn onClick={handleBtnAdiciona}>
-              <FaPlus />
-            </AdicionarBtn>
+            <div style={{ display: "flex", gap: ".5rem" }}>
+              <BtnServicos
+                onClick={handleBtnModal}
+                corbtn="var(--azul-botao)"
+                corbtnhover="var(--azul-botao-hover)"
+              >
+                <FaPlus />
+              </BtnServicos>
+              <BtnServicos
+                onClick={handleBtnModalEditar}
+                corbtn="#0fb300"
+                corbtnhover="#0c9100"
+              >
+                <MdModeEdit />
+              </BtnServicos>
+              <BtnServicos
+                onClick={handleBtnDeleta}
+                corbtn="var(--vermelho-botao)"
+                corbtnhover="var(--vermelho-botao-hover)"
+              >
+                <MdDelete />
+              </BtnServicos>
+            </div>
           </InputsWrapper>
           <EtiquetaServico ref={componentRef} className="servico">
             <h3>AUTORIZAÇÃO DE SERVIÇOS</h3>
@@ -180,7 +221,12 @@ const Servicos = () => {
           </EtiquetaServico>
           <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
           {adicionaModalIsOpen && (
-            <ModalNovoServico handleCloseModal={setadicionaModalIsOpen} />
+            <ModalNovoServico
+              handleCloseModal={setadicionaModalIsOpen}
+              valoresEditar={valoresEditar}
+              editar={editar}
+              setEditar={setEditar}
+            />
           )}
         </div>
       )}
