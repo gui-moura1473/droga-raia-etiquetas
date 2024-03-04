@@ -1,24 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ContainerPrincipal from "../../componentes/ContainerPrincipal";
 import styled from "styled-components";
 import { TituloPrincipal } from "../Posologia";
 import InputGroupNome from "./InputGroupNome";
 import InputGroupTelefone from "./InputGroupTelefone";
-import CheckGroup from "./CheckGroup";
 import InputText from "./InputText";
+import logoRaia from "../../assets/images/droga-raia-logo2.png";
+import { FaUser } from "react-icons/fa";
+import { FaRegCalendarCheck } from "react-icons/fa";
+import InputCpf from "./InputCPF";
+import { formatedActualDate } from "../../utils/formatValues";
+import { useReactToPrint } from "react-to-print";
+import NormalBtn from "../../componentes/NormalBtn";
 
 const FormEncomendas = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   align-items: center;
-  width: 70%;
+  width: 80%;
 `;
 
 const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: 2rem;
   width: 100%;
 `;
@@ -36,62 +43,101 @@ const BtnsContainer = styled.div`
 `;
 
 const EtiquetaEncomendas = styled.div`
-  height: 320px;
   width: 320px;
   border: 2px solid #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin-block: 1rem;
+  font-size: 1.1rem;
+
+  img {
+    align-self: center;
+    margin: 0.5rem;
+  }
 
   h3 {
     background-color: #000;
     border: 1px solid #000;
     color: #fff;
-    padding: 1rem 4rem;
+    padding: 0.3rem 4rem;
     font-size: 1.3rem;
-    margin-bottom: 0.5rem;
     text-align: center;
     width: 100%;
   }
 
-  table {
-    margin: 0.5rem;
-    text-align: center;
-    border: 1px solid #000;
-    width: 95%;
-    border-collapse: collapse;
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
 
-  th:first-child {
-    width: 50%;
+  .divider-box {
+    padding: 1rem;
+    border-block: 1px solid #000;
+    width: 100%;
+
+    .divisor {
+      background-color: #000000;
+      justify-content: self;
+      margin-block: 1rem;
+      margin-inline: auto;
+      height: 2px;
+      width: 95%;
+      align-self: center;
+    }
+
+    .dados-footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .comentarios {
+      text-align: justify;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
   }
 
-  th {
-    background-color: #000;
-    color: #fff;
-    font-weight: 500;
-    padding-block: 0.3rem;
-    width: 25%;
-    font-size: 1.1rem;
-  }
+  .dados-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
 
-  td {
-    padding-block: 0.7rem;
-    padding-inline: 0.2rem;
-    font-size: 1.1rem;
-  }
-
-  span {
-    margin-bottom: 0.7rem;
+    svg {
+      transform: scale(1.5);
+    }
   }
 `;
 
 const Encomendas = () => {
   const [nomeCliente, setNomeCliente] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [ehResidencial, setEhResidencial] = useState(true);
+  const [cpf, setCpf] = useState("");
   const [descricao, setDescricao] = useState("");
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    setData(formatedActualDate());
+  }, []);
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+  const handlePrintEvent = (event) => {
+    event.preventDefault();
+    handlePrint();
+    setNomeCliente("");
+    setTelefone("");
+    setCpf("");
+    setDescricao("");
+  };
 
   return (
     <ContainerPrincipal>
@@ -103,16 +149,11 @@ const Encomendas = () => {
             value={nomeCliente}
             setValue={setNomeCliente}
           />
+          <InputCpf label="CPF" value={cpf} setValue={setCpf} />
           <InputGroupTelefone
             label="Telefone"
             value={telefone}
             setValue={setTelefone}
-            tipoTelefone={ehResidencial}
-          />
-          <CheckGroup
-            label="Residencial"
-            value={ehResidencial}
-            setValue={setEhResidencial}
           />
         </RowWrapper>
         <RowWrapper>
@@ -123,27 +164,32 @@ const Encomendas = () => {
           />
         </RowWrapper>
         <BtnsContainer>
-          <EtiquetaEncomendas>
+          <EtiquetaEncomendas ref={componentRef} className="servico">
             <h3>ENCOMENDA/RESERVA</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>SERVIÇO</th>
-                  <th>CÓDIGO</th>
-                  <th>VALOR</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2</td>
-                  <td>2</td>
-                  <td>2</td>
-                </tr>
-              </tbody>
-            </table>
-            <span>5</span>
+            <div className="divider-box">
+              <h4>Dados do cliente:</h4>
+              <div className="dados-wrapper">
+                <FaUser />
+                <div className="dados-col">
+                  <p style={{ fontSize: "1.2rem" }}>
+                    {nomeCliente.toUpperCase()}
+                  </p>
+                  <p>CPF: {cpf}</p>
+                  <p>{telefone}</p>
+                </div>
+              </div>
+              <div className="divisor"></div>
+              <h4>Cometários/Descrição:</h4>
+              <p className="comentarios">{descricao}</p>
+              <div className="divisor"></div>
+              <div className="dados-footer">
+                <FaRegCalendarCheck />
+                <p>Reservado em {data}</p>
+              </div>
+            </div>
           </EtiquetaEncomendas>
         </BtnsContainer>
+        <NormalBtn onClick={handlePrintEvent}>Imprimir</NormalBtn>
       </FormEncomendas>
     </ContainerPrincipal>
   );

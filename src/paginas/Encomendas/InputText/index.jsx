@@ -35,7 +35,7 @@ const InputText = ({ label, value, setValue }) => {
     <Wrapper>
       <label>{label}</label>
       <textarea
-        rows="5"
+        rows="2"
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />

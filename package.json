@@ -23,7 +23,8 @@
     "react-router-dom": "^6.11.2",
     "react-to-print": "^2.14.13",
     "styled-components": "^6.0.1",
-    "swiper": "^11.0.6"
+    "swiper": "^11.0.6",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

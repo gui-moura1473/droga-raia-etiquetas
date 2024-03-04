@@ -10,6 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const TutorialImage = styled.img`
   height: 500px;
+  max-width: 500px;
+  object-fit: cover;
   display: flex;
 `;
 
@@ -25,6 +27,7 @@ const ContainerSlide = styled.div`
   align-items: center;
   padding-inline: 10%;
   margin-bottom: 15px;
+  cursor: grab;
 
   p {
     padding-left: 40px;

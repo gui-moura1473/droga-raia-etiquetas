@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { phoneMask } from "../../../utils/inputMasks";
+import { cpfMask } from "../../../utils/inputMasks";
 
 const InputContainer = styled.div`
   display: flex;
@@ -24,8 +24,8 @@ const InputContainer = styled.div`
     outline: none;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     font-size: 1.1rem;
-    width: 180px;
     height: 3.5rem;
+    width: 180px;
   }
 
   input:focus {
@@ -34,18 +34,18 @@ const InputContainer = styled.div`
   }
 `;
 
-const InputGroupTelefone = ({ label, value, setValue }) => {
+const InputCpf = ({ label, value, setValue }) => {
   return (
     <InputContainer>
       <label>{label}</label>
       <input
+        type="text"
         value={value}
-        onChange={(e) => setValue(phoneMask(e))}
-        minLength="14"
-        maxLength="15"
+        onChange={(e) => setValue(cpfMask(e))}
+        maxLength={14}
       />
     </InputContainer>
   );
 };
 
-export default InputGroupTelefone;
+export default InputCpf;

@@ -16,6 +16,7 @@ const TutorialImage = styled.img`
 const ContainerSlider = styled.div`
   display: flex;
   width: 100%;
+  cursor: grab;
 `;
 
 const ContainerSlide = styled.div`

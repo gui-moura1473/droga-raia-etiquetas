@@ -41,7 +41,7 @@ const InputGroupNome = ({ label, value, setValue, width }) => {
       <input
         type="text"
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => setValue(event.target.value.toUpperCase())}
         width={width}
       />
     </InputContainer>

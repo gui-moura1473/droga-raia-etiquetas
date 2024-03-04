@@ -18,9 +18,10 @@ register();
 
 const SectionWrapper = styled.div`
   display: flex;
-  gap: 5rem;
+  align-items: flex-start;
   margin-bottom: 2rem;
-
+  gap: 8rem;
+  width: 80%;
   div {
     display: flex;
     flex-direction: row;
@@ -33,7 +34,6 @@ const SectionWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
     margin-left: 1rem;
   }
 
@@ -44,13 +44,15 @@ const SectionWrapper = styled.div`
 
   p {
     margin-bottom: 1rem;
+    text-align: justify;
   }
 
   img {
+    width: 400px;
+    height: 200px;
+    border-radius: 1rem;
     object-fit: cover;
-    width: 250px;
-    height: 250px;
-    border-radius: 10px;
+    margin-bottom: 0.8rem;
   }
 `;
 
@@ -74,26 +76,26 @@ const Tutorial = () => {
       <TituloPrincipal>Configurações do Sistema de Etiquetas</TituloPrincipal>
       <SectionWrapper>
         <div>
-          <img src={painelControle} />
           <aside>
-            <h3>Como chegar nas configurações da impressora?</h3>
+            <h3>Passo 1: Alcançar as configurações</h3>
             <p>
               Clique abaixo para saber como partir da área de trabalho do
               computador até o painel de controle, onde você conseguirá
               encontrar as configurações da impressora.
             </p>
+            <img src={painelControle} />
             <NormalBtn onClick={handleClickPainel}>Leia mais</NormalBtn>
           </aside>
         </div>
         <div>
-          <img src={configImpressora} />
           <aside>
-            <h3>Como configurar a impressora?</h3>
+            <h3>Passo 2: Configurar a impressora</h3>
             <p>
               Clique abaixo para saber de que maneira você deve deixar as
               configurações de sua impressora para que as etiquetas saiam
               adequadamente e não prejudique as etiquetas de controlados.
             </p>
+            <img src={configImpressora} />
             <NormalBtn onClick={handleClickConfig}>Leia mais</NormalBtn>
           </aside>
         </div>
