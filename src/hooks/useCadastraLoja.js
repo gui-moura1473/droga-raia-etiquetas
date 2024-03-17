@@ -15,7 +15,7 @@ export const useCadastraLoja = () => {
 
 const createNovaLoja = (data) => {
     const novaLoja = axios
-        .post(`${import.meta.env.VITE_API_URL}api/lojas`, data)
+        .post(`https://drogaraiaetiquetas-api-beige.vercel.app/api/lojas`, data)
         .then((res) => res)
         .then(() => toast.success("Serviço cadastrado com sucesso!"))
         .catch(() => {

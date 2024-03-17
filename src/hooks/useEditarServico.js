@@ -22,7 +22,7 @@ const editarServico = (data) => {
         ean: data.ean
     }
     const servicoEditado = axios
-        .put(`${import.meta.env.VITE_API_URL}api/servicos/${data._id}`, formatedData)
+        .put(`https://drogaraiaetiquetas-api-beige.vercel.app/api/servicos/${data._id}`, formatedData)
         .then(() => toast.success("Serviço editado com sucesso!"))
         .catch(() => toast.error("Houve algum erro ao tentar editar o serviço!"))
 

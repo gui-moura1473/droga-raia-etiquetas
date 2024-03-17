@@ -15,7 +15,7 @@ export const useServicos = () => {
 
 const getServicos = () => {
     const servicos = axios
-        .get(`${import.meta.env.VITE_API_URL}api/servicos`)
+        .get(`https://drogaraiaetiquetas-api-beige.vercel.app/api/servicos`)
         .then((res) => res.data)
         .catch(() => {
             toast.error("Falha ao buscar os serviços!")

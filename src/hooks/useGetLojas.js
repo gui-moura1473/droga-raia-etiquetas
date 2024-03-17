@@ -15,7 +15,7 @@ export const useGetLojas = () => {
 
 const getLojas = () => {
     const lojas = axios
-        .get(`${import.meta.env.VITE_API_URL}api/lojas`)
+        .get(`https://drogaraiaetiquetas-api-beige.vercel.app/api/lojas`)
         .then((res) => res.data)
         .catch(() => {
             toast.error("Erro ao buscar as lojas")

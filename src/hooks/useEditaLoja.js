@@ -15,7 +15,7 @@ export const useEditaLoja = () => {
 
 const editLoja = (data) => {
     const lojaEditada = axios
-        .put(`${import.meta.env.VITE_API_URL}api/lojas/${data._id}`, data)
+        .put(`https://drogaraiaetiquetas-api-beige.vercel.app/api/lojas/${data._id}`, data)
         .then(() => toast.success("Serviço editado com sucesso!"))
         .catch(() => toast.error("Houve algum erro ao tentar editar o serviço!"));
     return lojaEditada;

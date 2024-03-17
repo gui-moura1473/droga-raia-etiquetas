@@ -16,7 +16,7 @@ export const useCadastrarServico = () => {
 
 const createNovoServico = (data) => {
     const servicos = axios
-        .post(`${import.meta.env.VITE_API_URL}api/servicos`, data)
+        .post(`https://drogaraiaetiquetas-api-beige.vercel.app/api/servicos`, data)
         .then((res) => res)
         .then(() => toast.success("Serviço cadastrado com sucesso!"))
         .catch(() => {
