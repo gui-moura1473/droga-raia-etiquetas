@@ -95,6 +95,15 @@ const Servicos = () => {
     return;
   };
 
+  const ordenarAlfabetico = (lista) => {
+    const resultado = lista.sort((a, b) => {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+    return resultado;
+  };
+
   return (
     <ContainerPrincipal>
       <TituloPrincipal>Serviços Farmacêuticos</TituloPrincipal>
@@ -127,7 +136,7 @@ const Servicos = () => {
             <SelectGroup
               handleChange={handleChangeServico}
               value={servicoSelecionado}
-              servicos={servicos}
+              servicos={ordenarAlfabetico(servicos)}
             />
             <InputGroup
               label="Código"

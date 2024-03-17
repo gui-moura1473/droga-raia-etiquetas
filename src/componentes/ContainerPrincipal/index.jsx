@@ -18,24 +18,6 @@ const ConteudoWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 16px 54px;
-
-  .loader-circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 10px solid #c7c7c7;
-    border-top-color: var(--azul-raia);
-    animation: loader-circle 1s linear infinite;
-  }
-
-  @keyframes loader-circle {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
 `;
 
 const ContainerPrincipal = ({ children }) => {

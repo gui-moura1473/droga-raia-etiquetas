@@ -22,7 +22,7 @@ const editarServico = (data) => {
         ean: data.ean
     }
     const servicoEditado = axios
-        .put(`https://drogaraia-etiquetas-api.cyclic.app/api/servicos/${data._id}`, formatedData)
+        .put(`${import.meta.env.VITE_API_URL}api/servicos/${data._id}`, formatedData)
         .then(() => toast.success("Serviço editado com sucesso!"))
         .catch(() => toast.error("Houve algum erro ao tentar editar o serviço!"))
 

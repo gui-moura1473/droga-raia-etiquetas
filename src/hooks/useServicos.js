@@ -15,7 +15,7 @@ export const useServicos = () => {
 
 const getServicos = () => {
     const servicos = axios
-        .get("https://drogaraia-etiquetas-api.cyclic.app/api/servicos")
+        .get(`${import.meta.env.VITE_API_URL}api/servicos`)
         .then((res) => res.data)
         .catch(() => {
             toast.error("Falha ao buscar os serviços!")

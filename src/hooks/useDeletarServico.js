@@ -16,7 +16,7 @@ export const useDeletarServico = () => {
 
 const deletaServico = (id) => {
     const servicoDeletado = axios
-        .delete(`https://drogaraia-etiquetas-api.cyclic.app/api/servicos/${id}`)
+        .delete(`${import.meta.env.VITE_API_URL}api/servicos/${id}`)
         .then(() => toast.success("Serviço deletado com sucesso!"))
         .catch(() => toast.error("Falha ao cadastrar serviço!"))
     return servicoDeletado

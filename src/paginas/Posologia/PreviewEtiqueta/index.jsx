@@ -1,111 +1,109 @@
-import React, { useContext } from 'react';
-import { styled } from 'styled-components';
-import { AuthContext } from '../../../contexts/AuthContext'
+import React, { useContext } from "react";
+import { styled } from "styled-components";
+import { AuthContext } from "../../../contexts/AuthContext";
 
-import logoRaia from '../../../assets/images/logo-raia.png'
+import logoRaia from "../../../assets/images/logo-raia.png";
+import { mountPhones } from "../../../utils/mountPhones";
 
 const EtiquetaContainer = styled.div`
-    width: 240px;
-    border: 1px solid #000;
-    border-radius: 2px;
-    padding: 1.5px;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    
-    h2 {
-        text-transform: uppercase;
-        font-size: 1.3rem;
-    }
+  width: 240px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 1.5px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
 
-    h3 {
-        font-size: 1rem;
-    }
+  h2 {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+  }
 
-    span {
-        font-size: .9rem;
-        margin: 3px;
-        display: inline-block;
-    }
+  h3 {
+    font-size: 1rem;
+  }
 
-    h2, h3 {
-        background-color: #000;
-        color: #fff;
-        font-family: Poppins Bold;
-        padding: 2px;
-        text-align: center; 
-    }
+  span {
+    font-size: 0.9rem;
+    margin: 3px;
+    display: inline-block;
+  }
 
-    p {
-        font-size: .6rem;
-    }
-`
+  h2,
+  h3 {
+    background-color: #000;
+    color: #fff;
+    font-family: Poppins Bold;
+    padding: 2px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 0.6rem;
+  }
+`;
 
 const ContainerInterno = styled.div`
-    margin-top: 3px;
-    width: 100%;
-    border: 1px solid #000;
-    border-radius: 2px 2px 12px 12px;
-    padding: 1.3px;
-    text-align: center;
-`
+  margin-top: 3px;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 2px 2px 12px 12px;
+  padding: 1.3px;
+  text-align: center;
+`;
 
 const Rodape = styled.div`
-    margin-top: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: 90%;
-    align-self: center;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 90%;
+  align-self: center;
 
-    div {
-        text-align: center;
-    }
-`
+  div {
+    text-align: center;
+  }
+`;
 
 const LogoRaia = styled.img`
-    height: 35px;
-`
-
+  height: 35px;
+`;
 
 const PreviewEtiqueta = ({ referencia, posologia, horariosRecomendados }) => {
+  const { filial } = useContext(AuthContext);
 
-    const { filial } = useContext(AuthContext);
+  const sugestoesHorarios = [
+    "",
+    "No horário que melhor se adaptar",
+    "8:00h - 20:00h",
+    "7:00h - 15:00h - 23:00h",
+    "6:00h - 12:00h - 18:00h - 00:00h",
+  ];
 
-    const sugestoesHorarios = [
-        '',
-        'No horário que melhor se adaptar',
-        '8:00h - 20:00h',
-        '7:00h - 15:00h - 23:00h',
-        '6:00h - 12:00h - 18:00h - 00:00h'
-    ] 
+  return (
+    <EtiquetaContainer ref={referencia} className="etiqueta-print">
+      <h2>Posologia</h2>
+      <ContainerInterno>
+        <h3>Como utilizar?</h3>
+        <span>{posologia}</span>
+      </ContainerInterno>
+      {horariosRecomendados.horariosRecomendados && (
+        <ContainerInterno>
+          <h3>Horários Recomendados</h3>
+          <span>{sugestoesHorarios[horariosRecomendados.frequencia]}</span>
+        </ContainerInterno>
+      )}
+      <Rodape>
+        <LogoRaia src={logoRaia} />
+        <div>
+          <p>{filial.address}</p>
+          <p>{mountPhones()}</p>
+        </div>
+      </Rodape>
+    </EtiquetaContainer>
+  );
+};
 
-    return (
-        <EtiquetaContainer ref={referencia} className="etiqueta-print">
-            <h2>Posologia</h2>
-            <ContainerInterno>
-                <h3>Como utilizar?</h3>
-                <span>{posologia}</span>
-            </ContainerInterno>
-            {   horariosRecomendados.horariosRecomendados &&
-                (
-                    <ContainerInterno>
-                        <h3>Horários Recomendados</h3>
-                        <span>{sugestoesHorarios[horariosRecomendados.frequencia]}</span>
-                    </ContainerInterno>
-                )
-            }
-            <Rodape>
-                <LogoRaia src={logoRaia} />
-                <div>
-                    <p>{filial.endereco}</p>
-                    <p>{filial.telefone}</p>
-                </div>
-            </Rodape>
-        </EtiquetaContainer>
-    )
-}
-
-export default PreviewEtiqueta
+export default PreviewEtiqueta;

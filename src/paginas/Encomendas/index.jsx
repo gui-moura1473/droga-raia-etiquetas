@@ -5,7 +5,6 @@ import { TituloPrincipal } from "../Posologia";
 import InputGroupNome from "./InputGroupNome";
 import InputGroupTelefone from "./InputGroupTelefone";
 import InputText from "./InputText";
-import logoRaia from "../../assets/images/droga-raia-logo2.png";
 import { FaUser } from "react-icons/fa";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import InputCpf from "./InputCPF";
@@ -106,10 +105,16 @@ const EtiquetaEncomendas = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 1.2rem;
+
+    p {
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
 
     svg {
-      transform: scale(1.5);
+      margin-left: 0.7rem;
+      transform: scale(1.8);
     }
   }
 `;
@@ -171,16 +176,18 @@ const Encomendas = () => {
               <div className="dados-wrapper">
                 <FaUser />
                 <div className="dados-col">
-                  <p style={{ fontSize: "1.2rem" }}>
-                    {nomeCliente.toUpperCase()}
-                  </p>
-                  <p>CPF: {cpf}</p>
+                  <p>{nomeCliente.toUpperCase()}</p>
+                  {cpf != "" && <p>CPF: {cpf}</p>}
                   <p>{telefone}</p>
                 </div>
               </div>
-              <div className="divisor"></div>
-              <h4>Cometários/Descrição:</h4>
-              <p className="comentarios">{descricao}</p>
+              {descricao != "" && (
+                <>
+                  <div className="divisor"></div>
+                  <h4>Cometários/Descrição:</h4>
+                  <p className="comentarios">{descricao}</p>
+                </>
+              )}
               <div className="divisor"></div>
               <div className="dados-footer">
                 <FaRegCalendarCheck />

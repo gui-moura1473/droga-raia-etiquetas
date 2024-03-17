@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 import { Toaster } from "react-hot-toast";
 import Modal from "../../../componentes/Modal";

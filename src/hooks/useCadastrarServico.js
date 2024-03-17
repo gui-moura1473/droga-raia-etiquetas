@@ -16,7 +16,7 @@ export const useCadastrarServico = () => {
 
 const createNovoServico = (data) => {
     const servicos = axios
-        .post("https://drogaraia-etiquetas-api.cyclic.app/api/servicos", data)
+        .post(`${import.meta.env.VITE_API_URL}api/servicos`, data)
         .then((res) => res)
         .then(() => toast.success("Serviço cadastrado com sucesso!"))
         .catch(() => {
@@ -24,6 +24,3 @@ const createNovoServico = (data) => {
         });
     return servicos
 }
-
-
-// https://drogaraia-etiquetas-api.cyclic.app/api/servicos
