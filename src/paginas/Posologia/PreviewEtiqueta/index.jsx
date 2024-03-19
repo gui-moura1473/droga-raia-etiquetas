@@ -98,8 +98,8 @@ const PreviewEtiqueta = ({ referencia, posologia, horariosRecomendados }) => {
       <Rodape>
         <LogoRaia src={logoRaia} />
         <div>
-          <p>{filial.address}</p>
-          <p>{mountPhones()}</p>
+          <p>{filial.address || filial.endereco}</p>
+          <p>{mountPhones() || filial.telefone}</p>
         </div>
       </Rodape>
     </EtiquetaContainer>

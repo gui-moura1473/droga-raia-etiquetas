@@ -34,7 +34,8 @@ const IndentificadorLoja = () => {
     <IdentificadorLojaWrapper>
       <SlLocationPin />
       <p>
-        <span>Filial:</span> {filial.filialNumber} - {filial.name}
+        <span>Filial:</span> {filial.filialNumber || filial.filial} -{" "}
+        {filial.name || filial.loja}
       </p>
     </IdentificadorLojaWrapper>
   );

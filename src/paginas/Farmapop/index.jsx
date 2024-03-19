@@ -66,10 +66,10 @@ const Farmapop = () => {
             <th rowSpan="2">
               <img src={logoRaia} width="50px" />
             </th>
-            <th colSpan="3">{filial.address}</th>
+            <th colSpan="3">{filial.address || filial.endereco}</th>
           </tr>
           <tr>
-            <th colSpan="3">{mountPhones()}</th>
+            <th colSpan="3">{mountPhones() || filial.telefone}</th>
           </tr>
           <tr>
             <TableHeader width="80px">ATEND.</TableHeader>
